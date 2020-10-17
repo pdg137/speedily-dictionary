@@ -12,5 +12,9 @@ describe file do
     it "contains greek letter #{letter}" do
       expect(words[letter]).to eq(true)
     end
+
+    it "contains the plural greek letter #{letter}s" do
+      expect(words[letter+'s']).to eq(true)
+    end
   end
 end
