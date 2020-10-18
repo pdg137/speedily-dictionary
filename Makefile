@@ -11,6 +11,15 @@ all : cache/american-english-huge_2019.10.06-1_all.txt
 
 clean : ; rm -rf tmp cache
 
+check : 	cache/dictionary.txt					\
+		cache/american-english_2019.10.06-1_all.txt		\
+		cache/american-english-huge_2019.10.06-1_all.txt
+	for w in qaid qadi ;							\
+	do for i in $^ ;							\
+	   do grep -q $$w $$i || ( echo "word $$w missing in $$i" >&2  ) ;	\
+	   done									\
+	done
+
 test: cache/dictionary.txt
 	bundle exec rspec
 
