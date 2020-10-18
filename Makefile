@@ -1,3 +1,9 @@
+#  install instructions
+#      	- ruby on the Mac is too old (2.3.7), so install it with "brew"
+#	  and then put /usr/local/opt/ruby/bin on your path
+#	- run "gem install bundle"
+#	- run "bundle update --bundler"
+
 test: cache/dictionary.txt
 	bundle exec rspec
 
