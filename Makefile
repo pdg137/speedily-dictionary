@@ -4,12 +4,19 @@
 #	- run "gem install bundle"
 #	- run "bundle update --bundler"
 
+all : cache/dictionary.txt cache/wamerican_2019.10.06-1_all.deb
+all : cache/american-english_2019.10.06-1_all.txt
+all : cache/wamerican-huge_2019.10.06-1_all.deb
+all : cache/american-english-huge_2019.10.06-1_all.txt
+
+clean : ; rm -rf tmp cache
+
 test: cache/dictionary.txt
 	bundle exec rspec
 
-cache/dictionary.txt: cache/american-english_2019.10.06-1_all.txt \
-	cache/american-english-huge_2019.10.06-1_all.txt \
-	lib/dictionary_reader.rb lib/make_dictionary.rb
+cache/dictionary.txt: cache/american-english_2019.10.06-1_all.txt	\
+		cache/american-english-huge_2019.10.06-1_all.txt	\
+		lib/dictionary_reader.rb lib/make_dictionary.rb
 	bundle exec ruby lib/make_dictionary.rb
 
 cache/wamerican_2019.10.06-1_all.deb:
