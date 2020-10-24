@@ -17,4 +17,10 @@ describe file do
       expect(words[letter+'s']).to eq(true)
     end
   end
+
+  %w(qaid qadi).each do |word|
+    it "contains known word #{word}" do
+      expect(words[word]).to eq (true)
+    end
+  end
 end
