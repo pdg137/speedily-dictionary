@@ -20,9 +20,11 @@ check : 	dictionary.txt						\
 test: dictionary.txt
 	bundle exec rspec
 
-dictionary.txt: cache/american-english_2019.10.06-1_all.txt	\
+dictionary.txt: cache/american-english_2019.10.06-1_all.txt		\
 		cache/american-english-huge_2019.10.06-1_all.txt	\
-		lib/dictionary_reader.rb lib/make_dictionary.rb
+		lib/dictionary_reader.rb lib/make_dictionary.rb		\
+		contrib/*.add.txt					\
+		contrib/*.remove.txt
 	bundle exec ruby lib/make_dictionary.rb
 
 cache/wamerican_2019.10.06-1_all.deb:

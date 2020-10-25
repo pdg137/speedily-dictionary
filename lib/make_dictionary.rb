@@ -5,7 +5,7 @@ ubuntu_american = DictionaryReader.new('cache/american-english-huge_2019.10.06-1
 ubuntu_words = ubuntu_american.words.keys
                  .select { |word| word =~ /\A[a-z]+\Z/ }
 
-contrib_add_words = %w(paul david).collect { |name|
+contrib_add_words = %w(paul david dan).collect { |name|
   DictionaryReader.new("contrib/#{name}.add.txt").words.keys
 }.flatten
 
@@ -13,7 +13,7 @@ all_words = (
   ubuntu_words + contrib_add_words
 ).sort.uniq
 
-output = File.open('cache/dictionary.txt', 'w')
+output = File.open('dictionary.txt', 'w')
 
 all_words.each do |word|
   output.write(word)
