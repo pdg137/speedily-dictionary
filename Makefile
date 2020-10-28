@@ -6,7 +6,7 @@
 
 all : dictionary.txt
 
-clean : ; rm -rf tmp cache
+clean : ; rm -rf tmp cache dictionary.txt
 
 check : 	dictionary.txt						\
 		cache/american-english_2019.10.06-1_all.txt		\
