@@ -4,11 +4,14 @@
 #	- run "gem install bundle"
 #	- run "bundle update --bundler"
 
-all : dictionary.txt
+all : output/dictionary.csv
+
+output/dictionary.csv: output/dictionary.txt
+	tr '\n' ',' < $< > output/dictionary.csv 
 
 clean : ; rm -rf tmp cache dictionary.txt
 
-check : 	dictionary.txt						\
+check :		output/dictionary.txt						\
 		cache/american-english_2019.10.06-1_all.txt		\
 		cache/american-english-huge_2019.10.06-1_all.txt
 	for w in qaid qadi ;							\
@@ -17,14 +20,14 @@ check : 	dictionary.txt						\
 	   done									\
 	done
 
-test: dictionary.txt
+test: output/dictionary.txt
 	bundle exec rspec
 
-dictionary.txt: cache/american-english_2019.10.06-1_all.txt		\
-		cache/american-english-huge_2019.10.06-1_all.txt	\
-		lib/dictionary_reader.rb lib/make_dictionary.rb		\
-		contrib/*.add.txt					\
-		contrib/*.remove.txt
+output/dictionary.txt: cache/american-english_2019.10.06-1_all.txt		\
+	cache/american-english-huge_2019.10.06-1_all.txt	\
+	lib/dictionary_reader.rb lib/make_dictionary.rb		\
+	contrib/*.add.txt					\
+	contrib/*.remove.txt
 	bundle exec ruby lib/make_dictionary.rb
 
 cache/wamerican_2019.10.06-1_all.deb:
