@@ -5,7 +5,7 @@ ubuntu_american = DictionaryReader.new('cache/american-english-huge_2019.10.06-1
 ubuntu_words = ubuntu_american.words.keys
                  .select { |word| word =~ /\A[a-z]+\Z/ }
 
-contrib_add_words = %w(paul david dan).collect { |name|
+contrib_add_words = %w(paul david dan rebecca).collect { |name|
   DictionaryReader.new("contrib/#{name}.add.txt").words.keys
 }.flatten
 
