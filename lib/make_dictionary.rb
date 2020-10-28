@@ -18,5 +18,5 @@ output = File.open('output/dictionary.txt', 'w')
 
 all_words.each do |word|
   output.write(word)
-  output.write(",")
+  output.write("\n")
 end

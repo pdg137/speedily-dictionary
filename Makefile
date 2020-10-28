@@ -9,9 +9,9 @@ all : output/dictionary.csv
 output/dictionary.csv: output/dictionary.txt
 	tr '\n' ',' < $< > output/dictionary.csv 
 
-clean : ; rm -rf tmp cache dictionary.txt
+clean : ; rm -rf tmp cache output
 
-check :		output/dictionary.txt						\
+check :		output/dictionary.txt					\
 		cache/american-english_2019.10.06-1_all.txt		\
 		cache/american-english-huge_2019.10.06-1_all.txt
 	for w in qaid qadi ;							\
@@ -23,11 +23,12 @@ check :		output/dictionary.txt						\
 test: output/dictionary.txt
 	bundle exec rspec
 
-output/dictionary.txt: cache/american-english_2019.10.06-1_all.txt		\
-	cache/american-english-huge_2019.10.06-1_all.txt	\
-	lib/dictionary_reader.rb lib/make_dictionary.rb		\
-	contrib/*.add.txt					\
-	contrib/*.remove.txt
+output/dictionary.txt: cache/american-english_2019.10.06-1_all.txt	\
+	    cache/american-english-huge_2019.10.06-1_all.txt		\
+	    lib/dictionary_reader.rb lib/make_dictionary.rb		\
+	    contrib/*.add.txt						\
+	    contrib/*.remove.txt
+	mkdir -p output
 	bundle exec ruby lib/make_dictionary.rb
 
 cache/wamerican_2019.10.06-1_all.deb:
