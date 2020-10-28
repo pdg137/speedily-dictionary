@@ -13,7 +13,8 @@ all_words = (
   ubuntu_words + contrib_add_words
 ).sort.uniq
 
-output = File.open('dictionary.txt', 'w')
+Dir.mkdir('output') unless File.exists?('output')
+output = File.open('output/dictionary.txt', 'w')
 
 all_words.each do |word|
   output.write(word)
