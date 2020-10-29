@@ -7,7 +7,7 @@
 all : output/dictionary.csv
 
 output/dictionary.csv: output/dictionary.txt
-	tr '\n' ',' < $< > output/dictionary.csv 
+	<$< tr '\n' ',' | sed 's/,$$//' >output/dictionary.csv
 
 clean : ; rm -rf tmp cache output
 
