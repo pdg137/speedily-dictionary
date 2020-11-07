@@ -1,6 +1,6 @@
 require_relative '../lib/dictionary_reader.rb'
 
-file = 'cache/dictionary.txt'
+file = 'output/dictionary.txt'
 words = DictionaryReader.new(file).words
 
 describe file do
@@ -18,9 +18,15 @@ describe file do
     end
   end
 
-  %w(qaid qadi).each do |word|
+  %w(qaid qadi atomise).each do |word|
     it "contains known word #{word}" do
-      expect(words[word]).to eq (true)
+      expect(words[word]).to eq(true)
+    end
+  end
+
+  %w(emmy).each do |word|
+    it "removed word #{word} got removed" do
+      expect(words[word]).to eq(nil)
     end
   end
 end

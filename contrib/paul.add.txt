@@ -10,3 +10,5 @@ recaulk
 recaulks
 recaulking
 parasitics
+capoting
+plat

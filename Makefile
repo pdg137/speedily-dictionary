@@ -25,6 +25,7 @@ test: output/dictionary.txt
 
 output/dictionary.txt: cache/american-english_2019.10.06-1_all.txt		\
 	cache/american-english-huge_2019.10.06-1_all.txt	\
+	cache/british-english-huge_2019.10.06-1_all.txt	\
 	lib/dictionary_reader.rb lib/make_dictionary.rb		\
 	contrib/*.add.txt					\
 	contrib/*.remove.txt
@@ -33,6 +34,10 @@ output/dictionary.txt: cache/american-english_2019.10.06-1_all.txt		\
 cache/wamerican_2019.10.06-1_all.deb:
 	mkdir -p cache
 	curl https://mirrors.edge.kernel.org/ubuntu/pool/main/s/scowl/wamerican_2019.10.06-1_all.deb -o $@
+
+cache/wbritish_2019.10.06-1_all.deb:
+	mkdir -p cache
+	curl https://mirrors.edge.kernel.org/ubuntu/pool/main/s/scowl/wbritish_2019.10.06-1_all.deb -o $@
 
 cache/american-english_2019.10.06-1_all.txt: cache/wamerican_2019.10.06-1_all.deb
 	mkdir -p tmp
@@ -47,3 +52,12 @@ cache/american-english-huge_2019.10.06-1_all.txt: cache/wamerican-huge_2019.10.0
 	mkdir -p tmp
 	cd tmp && ar x ../$< && tar xf ./data.tar.xz ./usr/share/dict/american-english-huge
 	cp tmp/usr/share/dict/american-english-huge $@
+
+cache/wbritish-huge_2019.10.06-1_all.deb:
+	mkdir -p cache
+	curl http://mirrors.edge.kernel.org/ubuntu/pool/universe/s/scowl/wbritish-huge_2019.10.06-1_all.deb -o $@
+
+cache/british-english-huge_2019.10.06-1_all.txt: cache/wbritish-huge_2019.10.06-1_all.deb
+	mkdir -p tmp
+	cd tmp && ar x ../$< && tar xf ./data.tar.xz ./usr/share/dict/british-english-huge
+	cp tmp/usr/share/dict/british-english-huge $@
