@@ -25,7 +25,13 @@ describe file do
   end
 
   %w(emmy).each do |word|
-    it "removed word #{word} got removed" do
+    specify "removed word #{word} got removed" do
+      expect(words[word]).to eq(nil)
+    end
+  end
+
+  %w(ohio abel abelmoschus abkaz).each do |word|
+    it "does not contain proper noun #{word}" do
       expect(words[word]).to eq(nil)
     end
   end

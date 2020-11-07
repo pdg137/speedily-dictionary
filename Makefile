@@ -25,7 +25,7 @@ test: output/dictionary.txt
 
 output/dictionary.txt: cache/american-english_2019.10.06-1_all.txt	\
 	    cache/american-english-huge_2019.10.06-1_all.txt		\
-	cache/british-english-huge_2019.10.06-1_all.txt	\
+	    cache/british-english-huge_2019.10.06-1_all.txt	\
 	    lib/dictionary_reader.rb lib/make_dictionary.rb		\
 	    contrib/*.add.txt						\
 	    contrib/*.remove.txt
