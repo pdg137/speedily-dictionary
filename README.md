@@ -13,3 +13,17 @@ Sources:
 2. Find the file dictionary.csv in this folder.
 3. Right-click and rename it to dictionary-original.csv.
 4. Download the new dictionary.csv and move it into the Speedily folder.
+
+## How can I tell that I'm on the latest release?
+
+These words should work:
+
+* atomise
+* theorise
+* plat
+
+These words should not work:
+
+* ohio
+* emmy
+* preace
