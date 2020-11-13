@@ -1,4 +1,4 @@
-== Current version: v2.0.0 ==
+## Current version: v2.0.0
 
 Words: 253,907
 
@@ -7,7 +7,7 @@ Sources:
 * [wbritish-huge 2019.10.06-1](https://packages.ubuntu.com/groovy/wbritish-huge)
 * [contributors](contrib/)
 
-== Installation ==
+## Installation
 
 1. Locate the folder where Speedily is installed, which should be `C:\Users\<username>\AppData\Local\Programs\Speedily`.
 2. Find the file dictionary.csv in this folder.
