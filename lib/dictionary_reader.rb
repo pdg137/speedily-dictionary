@@ -3,7 +3,7 @@ class DictionaryReader
 
   def initialize(filename)
     @words = {}
-    File.open(filename).each do |word|
+    File.open(filename, 'r:iso-8859-1').each do |word|
       @words[word.strip] = true
     end
   end

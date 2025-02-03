@@ -1,6 +1,6 @@
 require_relative '../lib/dictionary_reader.rb'
 
-file = 'output/dictionary.txt'
+file = ENV['out'] or raise 'expect dictionary in $out'
 words = DictionaryReader.new(file).words
 
 describe file do

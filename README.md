@@ -3,9 +3,14 @@
 Words: 253,907
 
 Sources:
-* [wamerican-huge 2019.10.06-1](https://packages.ubuntu.com/groovy/wamerican-huge)
-* [wbritish-huge 2019.10.06-1](https://packages.ubuntu.com/groovy/wbritish-huge)
+* [SCOWL wamerican.90 and wbritich.90 dictionaries](http://wordlist.aspell.net/) (also known as wamerican-huge and wbritish-huge)
 * [contributors](contrib/)
+
+## Building
+
+1. Install [nix](https://nixos.org/)
+2. Run `nix-build -o dictionary.csv`
+3. The dictionary will be built, tests will run, and if all is well the output will be left linked in this folder.
 
 ## Installation
 
