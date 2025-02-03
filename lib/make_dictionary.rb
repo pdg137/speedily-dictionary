@@ -1,13 +1,16 @@
 require_relative 'dictionary_reader'
 
-base_american = DictionaryReader.new(ENV['DICT_AMERICAN_HUGE'])
-base_british = DictionaryReader.new(ENV['DICT_BRITISH_HUGE'])
+STDERR.puts "Using base dictionaries: #{ENV['BASE_DICTIONARIES']}"
 
-american_words = base_american.words.keys
-                   .select { |word| word =~ /\A[a-z]+\Z/ }
+base_dictionaries = ENV['BASE_DICTIONARIES']
+                      .split(' ')
+                      .map { |f| DictionaryReader.new(f) }
 
-british_words = base_british.words.keys
-                  .select { |word| word =~ /\A[a-z]+\Z/ }
+base_words = base_dictionaries
+               .map(&:words)
+               .map(&:keys)
+               .flatten
+               .select { |word| word =~ /\A[a-z]+\Z/ }
 
 contrib_add_words = %w(paul david dan rebecca).collect { |name|
   DictionaryReader.new("contrib/#{name}.add.txt").words.keys
@@ -18,7 +21,7 @@ contrib_remove_words = %w(paul).collect { |name|
 }.flatten
 
 all_words = (
-  american_words + british_words + contrib_add_words - contrib_remove_words
+  base_words + contrib_add_words - contrib_remove_words
 ).sort.uniq
 
 all_words.each do |word|

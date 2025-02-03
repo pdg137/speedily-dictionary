@@ -1,4 +1,4 @@
-cache/*
 tmp/*
-output/*
 dictionary.txt
+dictionary.csv
+.bundle

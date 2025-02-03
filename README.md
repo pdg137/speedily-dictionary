@@ -9,8 +9,8 @@ Sources:
 ## Building
 
 1. Install [nix](https://nixos.org/)
-2. Run `nix-build -o dictionary.csv`
-3. The dictionary will be built, tests will run, and if all is well the output will be left linked in this folder.
+2. Run `nix-build`
+3. The dictionary will be built in txt and csv format, tests will run, and if all is well the output will be left linked in this folder.
 
 ## Installation
 
@@ -26,9 +26,11 @@ These words should work:
 * atomise
 * theorise
 * plat
+* vocab
 
 These words should not work:
 
 * ohio
 * emmy
 * preace
+* vitamine

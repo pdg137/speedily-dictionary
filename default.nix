@@ -13,7 +13,7 @@ let
 
   gemset = import ./build_gemset.nix pkgs {
     # If you update Gemfile.lock, you will need to revise this hash.
-    hash = "sha256-tPE2g5Ab9IvsIMrLf0FKffVbihpQxwKdlBXi60x+Z6M=";
+    hash = "sha256-fFpdCrFeFzhX4AtIHLNogF4SZhTJckN6zXh0f8KNiKI=";
     gemfile = ./Gemfile;
     lockfile = ./Gemfile.lock;
   };
@@ -37,8 +37,7 @@ in
       pkgs.ruby
     ];
 
-    DICT_AMERICAN_HUGE = "${pkgs.scowl}/share/dict/wamerican.90";
-    DICT_BRITISH_HUGE = "${pkgs.scowl}/share/dict/wbritish.90";
+    BASE_DICTIONARIES = "${pkgs.scowl}/share/dict/wamerican.80 ${pkgs.scowl}/share/dict/wamerican.variants.60 ${pkgs.scowl}/share/dict/wamerican.acceptable.70 ${pkgs.scowl}/share/dict/wbritish.80 ${pkgs.scowl}/share/dict/wbritish.variants.60 ${pkgs.scowl}/share/dict/wbritish.acceptable.70";
 
     lib = ./lib;
     spec = ./spec;
@@ -52,7 +51,12 @@ in
       cp -r $spec ./spec
       cp -r $contrib ./contrib
 
-      ruby lib/make_dictionary.rb > "$out"
+      mkdir "$out"
+      ruby lib/make_dictionary.rb > "$out/dictionary.txt"
+      cat "$out/dictionary.txt" | tr '\n' ',' | sed 's/,$$//' > "$out/dictionary.csv"
+
+      # for rspec
+      ln -s $out ./output
       rspec
     '';
   }

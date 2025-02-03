@@ -1,6 +1,6 @@
 require_relative '../lib/dictionary_reader.rb'
 
-file = ENV['out'] or raise 'expect dictionary in $out'
+file = 'output/dictionary.txt' or raise 'expected dictionary in output/dictionary.txt'
 words = DictionaryReader.new(file).words
 
 describe file do
@@ -18,7 +18,7 @@ describe file do
     end
   end
 
-  %w(qaid qadi atomise).each do |word|
+  %w(qaid qadi atomise antichrist aquaria).each do |word|
     it "contains known word #{word}" do
       expect(words[word]).to eq(true)
     end
