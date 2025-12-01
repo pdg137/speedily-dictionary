@@ -2,11 +2,11 @@ let
   # Change to this if you want to use your configured channel
   #  nixpkgs = <nixpkgs>;
 
-  # nixos-24.11 from 2024-12-29:
+  # nixos-25.11 from 2025-11-30:
   nixpkgs = fetchTarball {
     name = "nixpkgs";
-    url = "https://github.com/NixOS/nixpkgs/archive/d49da4c0.tar.gz";
-    sha256 = "02g0ivn1nd8kpzrfc4lpzjbrcixi3p8iysshnrdy46pnwnjmf1rj";
+    url = "https://github.com/NixOS/nixpkgs/archive/d542db7.tar.gz";
+    sha256 = "0x6wjmpzxrrlmwwq8v3znpyr1qs5m1vf9bdgwwlq0lr5fl8l4v67";
   };
 
   pkgs = import nixpkgs {};
